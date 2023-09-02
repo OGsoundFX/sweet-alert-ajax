@@ -1,10 +1,22 @@
-<h1>All flats</h1>
-<ul>
-  <% @flats.each do |flat| %>
-    <li>
-      <%= flat.name %>
-      <%= link_to "book", book_path(flat_id: flat) %>
-      <%= "booked" if flat.status == "booked" %>
-    </li>
-  <% end %>
-</ul>
+<div class="container">
+  <h1>All flats</h1>
+
+  <h3 class="mt-5 mb-3">1- Triggering the status change after clicking on the <strong>confirm</strong> button</h3>
+  <ul>
+    <% @flats.each do |flat| %>
+      <%= render "flat", flat: flat %>
+    <% end %>
+  </ul>
+
+  <h3 class="mt-5 mb-3">2- Triggering the sweet alert after status change</h3>
+    <ul>
+      <% @flats.each do |flat| %>
+        <li>
+          <%= flat.name %>
+          <%= link_to "book", book_alt_path(flat_id: flat) %>
+          <%= "booked" if flat.status == "booked" %>
+        </li>
+      <% end %>
+    </ul>
+</div>
+
