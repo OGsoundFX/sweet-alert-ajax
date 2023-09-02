@@ -1,0 +1,10 @@
+<h1>All flats</h1>
+<ul>
+  <% @flats.each do |flat| %>
+    <li>
+      <%= flat.name %>
+      <%= link_to "book", book_path(flat_id: flat) %>
+      <%= "booked" if flat.status == "booked" %>
+    </li>
+  <% end %>
+</ul>
