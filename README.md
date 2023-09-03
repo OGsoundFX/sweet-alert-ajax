@@ -69,7 +69,8 @@ Pin the javascript package to your ```importmap.rb``` file by:
     }
   }
    ```
-- Connect the controller to the ```update button``` in your front-end:
+- Connect the controller to the ```book``` button in your front-end:
+
 ```ruby
 # views/flats/_flat.html.erb
 
@@ -147,3 +148,55 @@ export default class extends Controller {
 <br><br>
 
 ## Scenario 2: Have a Sweet Alert popup after flat status update:
+  - generate the stimulus controller:
+   ```shell
+   rails g stimulus flat2
+   ```
+  - implement following code in the stimulus controller just created
+
+```javascript
+// javascript/controllers/alert2_controller.js
+
+import { Controller } from "@hotwired/stimulus"
+import Swal from "sweetalert2"
+
+export default class extends Controller {
+  static values = { 
+    flatName: String
+  }
+  
+  initSweetalert(event) {
+    event.preventDefault();
+    fetch(event.target.href, {headers: { "Accept": "text/plain" }})
+      .then(response => response.text())
+      .then((data) => {
+        event.target.parentElement.outerHTML = data
+      }).then(
+        Swal.fire({
+          icon: "success", 
+          title: "Congratulations", 
+          html: `<h3>Your booking for <strong style="color: #a5dc86">${this.flatNameValue}</strong> is confirmed</h3>`,
+          showConfirmButton: false,
+          timer: 1800
+        })
+      )
+  }
+}
+```
+
+- Connect the controller to the ```book``` button in your front-end:
+```ruby
+# views/flats/_flat2.html.erb
+
+<%= flat.name %>
+<% if flat.status == "booked" %>
+  <span><strong style="color: #a5dc86">booked</strong></span>
+<% else %>
+  <%= link_to "book", book_alt_path(flat_id: flat), data: { 
+    controller: "alert2",
+    alert2_flat_name_value: flat.name,
+    action: "click->alert2#initSweetalert", 
+    turbo: false 
+  } %>
+<% end %>
+```
