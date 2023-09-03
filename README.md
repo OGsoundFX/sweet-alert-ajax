@@ -126,7 +126,7 @@ export default class extends Controller {
   }
 }
 ```
-- As you can see the fetch function here sends a request to a ```book_path``` which is a simple get request in the routes ```get "book", to: "flats#book"``` redirecting to the followowing ```book``` action in the flats controller:
+- As you can see the fetch function here sends a request to a ```book_path``` which is a simple get request implemented in the routes ```get "book", to: "flats#book"``` redirecting to the following ```book``` action in the flats controller:
 
 ```ruby
 # controllers/flats_controller.rb
@@ -199,4 +199,19 @@ export default class extends Controller {
     turbo: false 
   } %>
 <% end %>
+```
+- The fetch function here sends a request to a ```book_alt_path``` which is a simple get request implemented in the routes ```get "book_alt", to: "flats#book_alt"``` redirecting to the following ```book_alt``` action in the flats controller:
+
+```ruby
+# controllers/flats_controller.rb
+
+  def book
+    flat = Flat.find(params[:flat_id])
+    flat.status = 1
+    flat.save
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.text { render partial: "flat", locals: {flat: flat}, formats: [:html] }
+    end
+  end
 ```
