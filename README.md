@@ -1,6 +1,8 @@
 # Implementing Sweet Alert2 with ajax in Rails 7
 
-Here you can find the source page of **[Sweet Alert2](https://sweetalert2.github.io/)**
+### Resources
+- The **[Le Wagon Tutorial for Sweet Alert2](https://kitt.lewagon.com/knowledge/tutorials/sweetalert)** (without the ajax part)
+- The source page of **[Sweet Alert2](https://sweetalert2.github.io/)**
 
 ### Introduction
   - We will assume that you already have a rails app setup
