@@ -22,4 +22,12 @@ class FlatsController < ApplicationController
       format.text { render partial: "flat2", locals: {flat: flat}, formats: [:html] }
     end
   end
+
+  def reset
+    Flat.all.each do |flat|
+      flat.status = 0
+      flat.save
+    end
+    redirect_to root_path
+  end
 end
