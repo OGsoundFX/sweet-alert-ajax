@@ -215,3 +215,8 @@ export default class extends Controller {
     end
   end
 ```
+- And the result should look like this:
+<img width="1439" alt="Screenshot 2023-09-03 at 16 51 15" src="https://github.com/OGsoundFX/sweet-alert-ajax/assets/32952612/cd53c5a8-8742-4617-b856-3cd526654342">
+<br>
+
+### Hope this helps!!! 🙌
