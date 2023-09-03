@@ -2,7 +2,7 @@
 
 Here you can find the source page of **[Sweet Alert2](https://sweetalert2.github.io/)**
 
-### 1- Introduction
+### Introduction
   - We will assume that you already have a rails app setup
   - You can use this repo to test and explore the implementation:
     - clone this repo in the desired folder ```git clone git@github.com:OGsoundFX/sweet-alert-ajax.git```
@@ -12,7 +12,7 @@ Here you can find the source page of **[Sweet Alert2](https://sweetalert2.github
   - We will use Sweet Alert2 for the booking of a flat process which in the backend will update the flat's status from ```available``` to ```booked```
   - We will implement some ```ajax``` on top of Sweet Alert2 in order to update the booking status in the database and display it on the page without a refresh or redirect
 
-### 2- Setup
+### Setup
 Pin the javascript package to your ```importmap.rb``` file by:
   - running the following command in your terminal:
     ```shell
@@ -22,8 +22,8 @@ Pin the javascript package to your ```importmap.rb``` file by:
     ```ruby
     pin "sweetalert2", to: "https://ga.jspm.io/npm:sweetalert2@11.7.27/dist/sweetalert2.all.js"
     ```
-
-### 2- Scenario 1: Have a Sweet Alert popup to ask confirmation to the user to book a flat:
+<br><br>
+## Scenario 1: Have a Sweet Alert popup to ask confirmation to the user to book a flat:
   - generate the stimulus controller:
    ```shell
    rails g stimulus flat
@@ -144,3 +144,6 @@ export default class extends Controller {
 - And the result should look like this:
 <img width="1439" alt="Screenshot 2023-09-03 at 16 34 02" src="https://github.com/OGsoundFX/sweet-alert-ajax/assets/32952612/3083d830-e82e-415f-bc28-0262577f3ca9">
 
+<br><br>
+
+## Scenario 2: Have a Sweet Alert popup after flat status update:
