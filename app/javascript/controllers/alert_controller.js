@@ -18,7 +18,7 @@ export default class extends Controller {
       icon: this.iconValue, 
       title: this.titleValue, 
       html: this.htmlValue,
-      footer: '<a href="">Why do I have this issue?</a>',
+      footer: '<a href="/info">Need more information?</a>',
       confirmButtonText: this.confirmButtonTextValue, 
       showCancelButton: this.showCancelButtonValue, 
       cancelButtonText: this.cancelButtonTextValue, 
