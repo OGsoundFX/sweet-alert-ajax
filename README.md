@@ -115,4 +115,17 @@ export default class extends Controller {
   }
 }
 ```
+- As you can see the fetch function here sends a request to a ```book_path``` which is a simple get request in the routes ```get "book", to: "flats#book"``` redirecting to the followowing ```book``` action in the flats controller:
+
+```ruby
+  def book
+    flat = Flat.find(params[:flat_id])
+    flat.status = 1
+    flat.save
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.text { render partial: "flat", locals: {flat: flat}, formats: [:html] }
+    end
+  end
+```
 
