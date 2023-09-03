@@ -128,6 +128,8 @@ export default class extends Controller {
 - As you can see the fetch function here sends a request to a ```book_path``` which is a simple get request in the routes ```get "book", to: "flats#book"``` redirecting to the followowing ```book``` action in the flats controller:
 
 ```ruby
+# controllers/flats_controller.rb
+
   def book
     flat = Flat.find(params[:flat_id])
     flat.status = 1
@@ -138,4 +140,7 @@ export default class extends Controller {
     end
   end
 ```
+
+- And the result should look like this:
+<img width="1439" alt="Screenshot 2023-09-03 at 16 34 02" src="https://github.com/OGsoundFX/sweet-alert-ajax/assets/32952612/3083d830-e82e-415f-bc28-0262577f3ca9">
 
