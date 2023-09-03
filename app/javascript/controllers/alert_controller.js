@@ -17,7 +17,8 @@ export default class extends Controller {
     Swal.fire({
       icon: this.iconValue, 
       title: this.titleValue, 
-      html: this.htmlValue, 
+      html: this.htmlValue,
+      footer: '<a href="">Why do I have this issue?</a>',
       confirmButtonText: this.confirmButtonTextValue, 
       showCancelButton: this.showCancelButtonValue, 
       cancelButtonText: this.cancelButtonTextValue, 

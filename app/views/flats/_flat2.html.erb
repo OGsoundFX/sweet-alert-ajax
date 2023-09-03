@@ -1,0 +1,13 @@
+<li>
+  <%= flat.name %>
+  <% if flat.status == "booked" %>
+    <span><strong style="color: #a5dc86">booked</strong></span>
+  <% else %>
+    <%= link_to "book", book_alt_path(flat_id: flat), data: { 
+      controller: "alert2",
+      alert2_flat_name_value: flat.name,
+      action: "click->alert2#initSweetalert", 
+      turbo: false 
+    } %>
+  <% end %>
+</li>

@@ -17,6 +17,9 @@ class FlatsController < ApplicationController
     flat = Flat.find(params[:flat_id])
     flat.status = 1
     flat.save
-    redirect_to root_path
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.text { render partial: "flat2", locals: {flat: flat}, formats: [:html] }
+    end
   end
 end

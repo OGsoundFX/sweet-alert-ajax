@@ -1,15 +1,18 @@
 <li>
   <%= flat.name %>
-  <%= link_to "book", book_path(flat_id: flat), data: { 
-    controller: "alert",
-    alert_icon_value: "warning",
-    alert_title_value: "Are your sure?",
-    alert_html_value: "Create new post.",
-    alert_confirm_button_text_value: "All good!",
-    alert_show_cancel_button_value: true,
-    alert_cancel_button_text_value: "Cancel",
-    action: "click->alert#initSweetalert", 
-    turbo: false 
-  } %>
-  <%= "booked" if flat.status == "booked" %>
+  <% if flat.status == "booked" %>
+    <span><strong style="color: #a5dc86">booked</strong></span>
+  <% else %>
+    <%= link_to "book", book_path(flat_id: flat), data: { 
+      controller: "alert",
+      alert_icon_value: "warning",
+      alert_title_value: "Are your sure?",
+      alert_html_value: "Create new post.",
+      alert_confirm_button_text_value: "All good!",
+      alert_show_cancel_button_value: true,
+      alert_cancel_button_text_value: "Cancel",
+      action: "click->alert#initSweetalert", 
+      turbo: false 
+    } %>
+  <% end %>
 </li>
