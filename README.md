@@ -71,7 +71,13 @@ Pin the javascript package to your ```importmap.rb``` file by:
    ```
 - Connect the controller to the ```update button``` in your front-end:
 ```ruby
-<%= link_to "book", book_path(flat_id: flat), data: { 
+# views/flats/_flat.html.erb
+
+<%= flat.name %>
+<% if flat.status == "booked" %>
+  <span><strong style="color: #a5dc86">booked</strong></span>
+<% else %>
+  <%= link_to "book", book_path(flat_id: flat), data: { 
     controller: "alert",
     alert_icon_value: "warning",
     alert_title_value: "Are your sure?",
@@ -81,12 +87,16 @@ Pin the javascript package to your ```importmap.rb``` file by:
     alert_cancel_button_text_value: "Cancel",
     action: "click->alert#initSweetalert", 
     turbo: false 
-} %>
+  } %>
+<% end %>
+
 ```   
 
 > **Note:** You don't have to pass the values from the html file to the stimulus controller if they are not dynamic values, you can directly hard-code them in the stimuls controller like so:
 
 ```javascript
+// javascript/controllers/flat_controller.js
+
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2"
 
