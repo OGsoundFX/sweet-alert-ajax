@@ -69,38 +69,39 @@ Pin the javascript package to your ```importmap.rb``` file by:
     }
   }
    ```
-   
+- Connect the controller to the ```update button``` in your front-end:
+```ruby
+<%= link_to "book", book_path(flat_id: flat), data: { 
+    controller: "alert",
+    alert_icon_value: "warning",
+    alert_title_value: "Are your sure?",
+    alert_html_value: "You are about to book this place",
+    alert_confirm_button_text_value: "Confirm!",
+    alert_show_cancel_button_value: true,
+    alert_cancel_button_text_value: "Cancel",
+    action: "click->alert#initSweetalert", 
+    turbo: false 
+} %>
+```   
 
+> **Note:** You don't have to pass the values from the html file to the stimulus controller if they are not dynamic values, you can directly hard-code them in the stimuls controller like so:
 
-
-
-
-[!NOTE] You don't have to pass the values from the html file to the stimulus controller if they are not dynamic values, you can directly hard-code them in the stimuls controller like so:
 ```javascript
 import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2"
 
 export default class extends Controller {
-  static values = { 
-    icon: String, 
-    title: String, 
-    html: String,
-    confirmButtonText: String,
-    showCancelButton: Boolean,
-    cancelButtonText: String
-  }
   
   initSweetalert(event) {
     event.preventDefault();
     console.log(event)
     Swal.fire({
-      icon: this.iconValue, 
-      title: this.titleValue, 
-      html: this.htmlValue,
-      footer: '<a href="/info">Need more information?</a>',
-      confirmButtonText: this.confirmButtonTextValue, 
-      showCancelButton: this.showCancelButtonValue, 
-      cancelButtonText: this.cancelButtonTextValue, 
+      icon: "warning", 
+      title: "Are you sure?", 
+      html: "You are about to book this place",
+      confirmButtonText: "Confirm!", 
+      showCancelButton: true, 
+      cancelButtonText: "Cancel", 
       reverseButtons: true
     }).then((action) => {
       if (action.isConfirmed) {
